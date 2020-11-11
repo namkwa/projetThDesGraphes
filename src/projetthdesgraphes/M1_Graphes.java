@@ -1,12 +1,9 @@
 package projetthdesgraphes;
 
-import java.util.Arrays;
-import java.util.StringJoiner;
-
 public class M1_Graphes {
+    int [][] mValeur;
+    int [][] mAdjacente;
     int taille;
-    int[][] mValeur;
-    int[][] mAdjacente;
 
     public M1_Graphes(int taille) {
         this.taille=taille;
@@ -32,11 +29,16 @@ public class M1_Graphes {
 
     @Override
     public String toString() {
-        StringJoiner sj = new StringJoiner(System.lineSeparator());
-        for (int[] row : mValeur) {
-            sj.add(Arrays.toString(row));
+        String retourValeur = "mValeur";
+        String retourAdjacente = "mAdjacente";
+        for (int i = 0; i < this.taille ;i++){
+            retourAdjacente += "\n";
+            retourValeur += "\n";
+            for (int j =0; j < this.taille;i++){
+                retourValeur += mValeur[i][j] + "  ";
+                retourAdjacente += mAdjacente[i][j] + "  ";
+            }
         }
-        String result = sj.toString();
-        return result;
+        return retourAdjacente + "\n" + retourValeur;
     }
 }
