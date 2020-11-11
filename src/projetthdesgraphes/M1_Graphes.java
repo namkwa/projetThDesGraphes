@@ -10,18 +10,14 @@ public class M1_Graphes {
         this.mValeur = new int[taille][taille];
         this.mAdjacente = new int[taille][taille];
 
-        int indexL = -1;
-        int indexC = -1;
-        int infinie= Integer.MAX_VALUE;
-
-        for (int[] l : mValeur) {
-            indexL = indexL + 1;
-            for (int c : l) {
-                indexC=indexC+1;
-                if (indexC == indexL) {
-                    c = 0;
+        for (int i = 0; i < this.taille-1 ;i++){
+            for (int j =0; j < this.taille-1;j++) {
+                if (i == j) {
+                    this.mValeur[i][j] = 0;
+                    this.mAdjacente[i][j] = 0;
                 } else {
-                    c = infinie;
+                    this.mValeur[i][j] = Integer.MAX_VALUE;
+                    this.mAdjacente[i][j] = Integer.MAX_VALUE;
                 }
             }
         }
@@ -31,12 +27,20 @@ public class M1_Graphes {
     public String toString() {
         String retourValeur = "mValeur";
         String retourAdjacente = "mAdjacente";
-        for (int i = 0; i < this.taille ;i++){
+        for (int i = 0; i < this.taille-1 ;i++){
             retourAdjacente += "\n";
             retourValeur += "\n";
-            for (int j =0; j < this.taille;i++){
-                retourValeur += mValeur[i][j] + "  ";
-                retourAdjacente += mAdjacente[i][j] + "  ";
+            for (int j =0; j < this.taille-1;j++){
+                if(mValeur[i][j]==Integer.MAX_VALUE){
+                    retourValeur += "∞  ";
+                }else{
+                    retourValeur += mValeur[i][j] + "  ";
+                }
+                if(mValeur[i][j]==Integer.MAX_VALUE){
+                    retourAdjacente += "∞  ";
+                }else{
+                    retourAdjacente += mAdjacente[i][j] + "  ";
+                }
             }
         }
         return retourAdjacente + "\n" + retourValeur;
