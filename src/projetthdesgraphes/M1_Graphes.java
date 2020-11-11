@@ -26,7 +26,7 @@ public class M1_Graphes {
         }
         for (int k = 0; k < nb_arcs; k++) {
             line = scan.nextLine();
-            this.mAdjacente.setValeur(Integer.parseInt(line.substring(4, 5)), Integer.parseInt(line.substring(0, 1)), Integer.parseInt(line.substring(2, 3)));
+            this.mAdjacente.setValeur(Integer.parseInt(line.substring(4)), Integer.parseInt(line.substring(0, 1)), Integer.parseInt(line.substring(2, 3)));
         }
         this.mValeur = new M1_Matrice(this.mAdjacente.getMatrice(),this.mAdjacente.getTaille());
     }
@@ -40,7 +40,20 @@ public class M1_Graphes {
             }
             System.out.println(this.mValeur);
         }
-
+        for (int l = 0; l < taille; l++) {
+            if (this.mValeur.getValeur(l,l) < 0) {
+                System.out.println("il y a au moins un circuit absorbant");
+                return ;
+            }
+        }
+        System.out.println("il n'y a aucun circuit absorbant");
+        for (int i = 0; i < taille; i++) {
+            for (int j = 0; j < taille; j++) {
+                if (this.mValeur.getValeur(i,j) != 1000) {
+                    System.out.println("taille du chemin le plus court entre " + i + " et " + j + ": " + this.mValeur.getValeur(i,j));
+                }
+            }
+        }
     }
 
     @Override
