@@ -1,27 +1,36 @@
 package projetthdesgraphes;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class M1_Graphes {
     M1_Matrice mValeur;
     M1_Matrice mAdjacente;
 
-    public M1_Graphes(int taille) {
-        this.taille=taille;
-        this.mValeur.getTaille() = new int[taille][taille];
-        this.mAdjacente.getTaille() = new int[taille][taille];
-
-        for (int i = 0; i < this.taille ;i++){
-            for (int j =0; j < this.taille;j++) {
+    public M1_Graphes(Scanner scan) {
+        //on créé la matrice adjacente
+        String line = scan.nextLine();
+        this.mAdjacente = new M1_Matrice(Integer.parseInt(line.substring(0,1)));
+        int taille = Integer.parseInt(line.substring(0,1));
+        line = scan.nextLine();
+        int nb_arcs = Integer.parseInt(line.substring(0,1));
+        for (int i = 0; i < taille; i++) {
+            for (int j = 0; j < taille; j++) {
                 if (i == j) {
-                    this.mValeur[i][j] = 0;
-                    this.mAdjacente[i][j] = 0;
+                    this.mAdjacente.setValeur(0,i,j);
                 } else {
-                    this.mValeur = Integer.MAX_VALUE;
-                    this.mAdjacente[i][j] = Integer.MAX_VALUE;
+                    this.mAdjacente.setValeur(1000,i,j);
                 }
             }
         }
+        for (int k = 0; k < nb_arcs; k++) {
+            line = scan.nextLine();
+            this.mAdjacente.setValeur(Integer.parseInt(line.substring(4, 5)), Integer.parseInt(line.substring(0, 1)), Integer.parseInt(line.substring(2, 3)));
+        }
+        this.mValeur = new M1_Matrice(this.mAdjacente.getMatrice(),this.mAdjacente.getTaille());
     }
-    public void floyd_Marshall(){
+    public void floyd_Warshall(){
         int taille = this.mValeur.getTaille();
         for ( int k = 0; k < taille; k++){
             for (int i = 0; i < taille; i++) {
