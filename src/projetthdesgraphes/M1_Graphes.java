@@ -10,8 +10,8 @@ public class M1_Graphes {
         this.mValeur = new int[taille][taille];
         this.mAdjacente = new int[taille][taille];
 
-        for (int i = 0; i < this.taille-1 ;i++){
-            for (int j =0; j < this.taille-1;j++) {
+        for (int i = 0; i < this.taille ;i++){
+            for (int j =0; j < this.taille;j++) {
                 if (i == j) {
                     this.mValeur[i][j] = 0;
                     this.mAdjacente[i][j] = 0;
@@ -27,10 +27,10 @@ public class M1_Graphes {
     public String toString() {
         String retourValeur = "mValeur";
         String retourAdjacente = "mAdjacente";
-        for (int i = 0; i < this.taille-1 ;i++){
+        for (int i = 0; i < this.taille ;i++){
             retourAdjacente += "\n";
             retourValeur += "\n";
-            for (int j =0; j < this.taille-1;j++){
+            for (int j =0; j < this.taille;j++){
                 if(mValeur[i][j]==Integer.MAX_VALUE){
                     retourValeur += "∞  ";
                 }else{
