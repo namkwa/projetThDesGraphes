@@ -1,10 +1,9 @@
 package projetthdesgraphes;
 
-import java.util.Arrays;
-
 public class M1_Graphes {
     int [][] mValeur;
     int [][] mAdjacente;
+    int taille;
 
     public M1_Graphes(int taille) {
         int index=0;
@@ -24,9 +23,9 @@ public class M1_Graphes {
 
     @Override
     public String toString() {
-        return "M1_Graphes{" +
-                "mValeur=" + Arrays.toString(mValeur) +
-                ", mAdjacente=" + Arrays.toString(mAdjacente) +
-                '}';
+        String retour = "";
+        for (int i = 0; mValeur.length()>i ;i++){
+
+        }
     }
 }
