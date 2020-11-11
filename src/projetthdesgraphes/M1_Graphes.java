@@ -1,21 +1,30 @@
 package projetthdesgraphes;
 
+import java.util.Arrays;
+import java.util.StringJoiner;
+
 public class M1_Graphes {
-    int [][] mValeur;
-    int [][] mAdjacente;
     int taille;
+    int[][] mValeur;
+    int[][] mAdjacente;
 
     public M1_Graphes(int taille) {
-        int index=0;
+        this.taille=taille;
+        this.mValeur = new int[taille][taille];
+        this.mAdjacente = new int[taille][taille];
 
-        this.mValeur = new int [taille] [taille];
-        for (int[] l: mValeur){
-            index=index+1;
-            for (int c: l) {
-                if (c == index) {
+        int indexL = -1;
+        int indexC = -1;
+        int infinie= Integer.MAX_VALUE;
+
+        for (int[] l : mValeur) {
+            indexL = indexL + 1;
+            for (int c : l) {
+                indexC=indexC+1;
+                if (indexC == indexL) {
                     c = 0;
                 } else {
-                    c = Integer.MAX_VALUE;
+                    c = infinie;
                 }
             }
         }
@@ -23,9 +32,11 @@ public class M1_Graphes {
 
     @Override
     public String toString() {
-        String retour = "";
-        for (int i = 0; mValeur.length()>i ;i++){
-
+        StringJoiner sj = new StringJoiner(System.lineSeparator());
+        for (int[] row : mValeur) {
+            sj.add(Arrays.toString(row));
         }
+        String result = sj.toString();
+        return result;
     }
 }
