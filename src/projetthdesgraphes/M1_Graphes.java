@@ -30,7 +30,7 @@ public class M1_Graphes {
         }
         this.mValeur = new M1_Matrice(this.mAdjacente.getMatrice(),this.mAdjacente.getTaille());
     }
-    public void floyd_Warshall(){
+    public void floyd_Warshall() {
         int taille = this.mValeur.getTaille();
         for ( int k = 0; k < taille; k++){
             for (int i = 0; i < taille; i++) {
@@ -59,7 +59,5 @@ public class M1_Graphes {
     @Override
     public String toString() {
         return"mValeur" + this.mValeur.toString() + "\nmAdjacente" + this.mAdjacente.toString();
-
-
     }
 }
