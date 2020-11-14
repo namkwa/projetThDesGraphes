@@ -9,27 +9,35 @@ public class M1_Graphes {
     M1_Matrice mAdjacente;
 
     public M1_Graphes(Scanner scan) {
-        //on créé la matrice adjacente
+        //On récupére la taille du graphe et on créer la matrice adjacente
         String line = scan.nextLine();
-        this.mAdjacente = new M1_Matrice(Integer.parseInt(line.substring(0,1)));
-        int taille = Integer.parseInt(line.substring(0,1));
+        int taille = Integer.parseInt(line.substring(0));
+        this.mAdjacente = new M1_Matrice(taille);
+
+        //On initialise la diagonale à 0 et le reste à infinie(plus grand nombre géré par Java)
         line = scan.nextLine();
-        int nb_arcs = Integer.parseInt(line.substring(0,1));
+        int nb_arcs = Integer.parseInt(line.substring(0));
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
                 if (i == j) {
                     this.mAdjacente.setValeur(0,i,j);
                 } else {
-                    this.mAdjacente.setValeur(1000,i,j);
+                    this.mAdjacente.setValeur(Integer.MAX_VALUE,i,j);
                 }
             }
         }
+
+        //On enregistre les valeurs des arcs du fichiers dans la matrice adjacente
         for (int k = 0; k < nb_arcs; k++) {
             line = scan.nextLine();
-            this.mAdjacente.setValeur(Integer.parseInt(line.substring(4)), Integer.parseInt(line.substring(0, 1)), Integer.parseInt(line.substring(2, 3)));
+            int space1=line.indexOf(" ");
+            int space2=line.indexOf(" ", space1+1);
+            this.mAdjacente.setValeur(Integer.parseInt(line.substring(space2+1)), Integer.parseInt(line.substring(0, space1)), Integer.parseInt(line.substring(space1+1,space2)));
         }
+        //On initialise la matrice de valeur avec les données de la matrice adjacente
         this.mValeur = new M1_Matrice(this.mAdjacente.getMatrice(),this.mAdjacente.getTaille());
     }
+
     public void floyd_Warshall() {
         int taille = this.mValeur.getTaille();
         for ( int k = 0; k < taille; k++){
