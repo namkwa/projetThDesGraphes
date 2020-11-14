@@ -14,7 +14,7 @@ public class M1_Main {
             String graphe_choisi = "./Graphe" + numero_graphe;
             File text = new File(graphe_choisi);
 
-            //On créer un objet Scanner avec le fichier en paramétre
+            //On crée un objet Scanner avec le fichier en paramètre
             Scanner scan = new Scanner(text);
             M1_Graphes graphe = new M1_Graphes(scan);
             System.out.println("Graphe original");
