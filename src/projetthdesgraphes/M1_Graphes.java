@@ -11,7 +11,7 @@ public class M1_Graphes {
     public M1_Graphes(Scanner scan) {
         //On récupére la taille du graphe et on créer la matrice adjacente
         String line = scan.nextLine();
-        int taille = Integer.parseInt(line.substring(0));
+        int taille = Integer.parseInt(line);
         this.mAdjacente = new M1_Matrice(taille);
 
         //On initialise la diagonale à 0 et le reste à infinie(plus grand nombre géré par Java)
@@ -35,26 +35,31 @@ public class M1_Graphes {
             this.mAdjacente.setValeur(Integer.parseInt(line.substring(space2+1)), Integer.parseInt(line.substring(0, space1)), Integer.parseInt(line.substring(space1+1,space2)));
         }
         //On initialise la matrice de valeur avec les données de la matrice adjacente
-        this.mValeur = new M1_Matrice(this.mAdjacente.getMatrice(),this.mAdjacente.getTaille());
+        this.mValeur = new M1_Matrice(this.mAdjacente.getMatrice(),taille);
     }
 
     public void floyd_Warshall() {
         int taille = this.mValeur.getTaille();
+        M1_Matrice[] matrices_intermediaires = new M1_Matrice[taille];
         for ( int k = 0; k < taille; k++){
             for (int i = 0; i < taille; i++) {
                 for (int j = 0; j < taille; j++) {
                     this.mValeur.setValeur(Math.min(this.mValeur.getValeur(i,j), this.mValeur.getValeur(i,k) + this.mValeur.getValeur(k,j)),i,j);
                 }
             }
-            System.out.println(this.mValeur);
+            matrices_intermediaires[k]=this.mValeur;
         }
+        //détection des circuits absorbants
         for (int l = 0; l < taille; l++) {
             if (this.mValeur.getValeur(l,l) < 0) {
-                System.out.println("il y a au moins un circuit absorbant");
+                System.out.println("\nil y a au moins un circuit absorbant");
                 return ;
             }
         }
-        System.out.println("il n'y a aucun circuit absorbant");
+        for (int k = 0; k < taille; k++) {
+            System.out.println(matrices_intermediaires[k]);
+        }
+        System.out.println("\nil n'y a aucun circuit absorbant\n");
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
                 if (this.mValeur.getValeur(i,j) < Double.POSITIVE_INFINITY) {
