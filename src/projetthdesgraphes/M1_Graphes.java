@@ -52,18 +52,18 @@ public class M1_Graphes {
         //détection des circuits absorbants
         for (int l = 0; l < taille; l++) {
             if (this.mValeur.getValeur(l,l) < 0) {
-                System.out.println("\nil y a au moins un circuit absorbant");
+                System.out.println("\nIl y a au moins un circuit absorbant");
                 return ;
             }
         }
         for (int k = 0; k < taille; k++) {
             System.out.println(matrices_intermediaires[k]);
         }
-        System.out.println("\nil n'y a aucun circuit absorbant\n");
+        System.out.println("\nIl n'y a aucun circuit absorbant\n");
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
                 if (this.mValeur.getValeur(i,j) < Double.POSITIVE_INFINITY) {
-                    System.out.println("taille du chemin le plus court entre " + i + " et " + j + ": " + this.mValeur.getValeur(i,j));
+                    System.out.println("Taille du chemin le plus court entre " + i + " et " + j + ": " + (int)(this.mValeur.getValeur(i,j)));
                 }
             }
         }

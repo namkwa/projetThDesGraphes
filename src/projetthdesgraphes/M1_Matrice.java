@@ -52,7 +52,7 @@ public class M1_Matrice {
                         int longueur = String.valueOf(m).length();
                         int debut = (tailleCase - longueur)/2;
                         if (m == debut) {
-                            retourMatrice += j;
+                            retourMatrice += j-1;
                         }
                         else if (debut < m && m <= longueur + debut ) {
 
@@ -63,7 +63,7 @@ public class M1_Matrice {
                     }
                 }
                 else if (j == 0) {
-                    retourMatrice += i;
+                    retourMatrice += i-1;
                 }
                 else {
                     if(this.matrice[i-1][j-1] == Double.POSITIVE_INFINITY){
