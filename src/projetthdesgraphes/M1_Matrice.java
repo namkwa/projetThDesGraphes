@@ -1,7 +1,5 @@
 package projetthdesgraphes;
 
-import java.util.Arrays;
-
 public class M1_Matrice {
     double[][] matrice;
     private final int taille;

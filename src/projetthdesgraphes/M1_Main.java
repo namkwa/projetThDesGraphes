@@ -25,6 +25,11 @@ public class M1_Main {
             System.out.println("\nVoulez-vous sélectionner un autre graphe ?\n(y/n)");
             String reponse = continuation.next();
             fin = (reponse.equals("y"));
+            if (fin==false) {
+                saisieUtilisateur.close();
+                continuation.close();
+                System.out.println("Fin");
             }
         }
     }
+}
