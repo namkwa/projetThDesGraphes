@@ -9,12 +9,12 @@ public class M1_Graphes {
     M1_Matrice mAdjacente;
 
     public M1_Graphes(Scanner scan) {
-        //On récupére la taille du graphe et on créer la matrice adjacente
+        //On récupère la taille du graphe et on crée la matrice adjacente
         String line = scan.nextLine();
         int taille = Integer.parseInt(line);
         this.mAdjacente = new M1_Matrice(taille);
 
-        //On initialise la diagonale à 0 et le reste à infinie(plus grand nombre géré par Java)
+        //On initialise la diagonale à 0 et le reste à infini (plus grand nombre géré par Java)
         line = scan.nextLine();
         int nb_arcs = Integer.parseInt(line);
         for (int i = 0; i < taille; i++) {
@@ -27,7 +27,7 @@ public class M1_Graphes {
             }
         }
 
-        //On enregistre les valeurs des arcs du fichiers dans la matrice adjacente
+        //On enregistre les valeurs des arcs du fichier dans la matrice adjacente
         for (int k = 0; k < nb_arcs; k++) {
             line = scan.nextLine();
             int space1=line.indexOf(" ");
