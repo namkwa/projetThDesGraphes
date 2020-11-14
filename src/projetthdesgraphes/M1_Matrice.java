@@ -33,36 +33,46 @@ public class M1_Matrice {
 
     @Override
     public String toString() {
-        int tailleCase = 3;
+        int tailleCase = 1;
         String retourMatrice = "";
         for(int i = 0; i < taille; i++){
             for(int j = 0; j < taille; j++) {
                 if(String.valueOf((int)this.matrice[i][j]).length() > tailleCase && this.matrice[i][j]!=Double.POSITIVE_INFINITY)
-                    tailleCase = String.valueOf((int)this.matrice[i][j]).length();
+                    tailleCase = String.valueOf((int)this.matrice[i][j]).length() + 2;
             }
         }
-
         for (int i = 0; i < this.taille; i++){
             retourMatrice += "\n";
             for (int j =0; j < this.taille;j++){
                 if(this.matrice[i][j] == Double.POSITIVE_INFINITY){
-                    int fin = tailleCase - 3;
+                    int debut = (tailleCase - 1)/2;
                     for (int k = 0; k < tailleCase; k++){
-                        if (k == fin) {
+                        if (k == debut) {
                             retourMatrice += "∞";
                         }
-                        retourMatrice += " ";
-                    }
+                        else if (debut < k && k <= debut + 1) {
 
+                        }
+                        else {
+                            retourMatrice += " ";
+                        }
+                    }
                 }else{
-                    int fin = tailleCase - String.valueOf((int)(this.matrice[i][j])).length();
+                    int longueur = String.valueOf((int)(this.matrice[i][j])).length();
+                    int debut = (tailleCase - longueur)/2;
                     for (int l = 0; l < tailleCase; l++) {
-                        if (l == fin) {
+                        if (l == debut) {
                             retourMatrice += (int)(this.matrice[i][j]);
                         }
-                        retourMatrice += " ";
+                        else if (debut < l && l <= longueur + debut ) {
+
+                        }
+                        else {
+                            retourMatrice += " ";
+                        }
                     }
                 }
+                retourMatrice += "|";
             }
         }
         return retourMatrice;
