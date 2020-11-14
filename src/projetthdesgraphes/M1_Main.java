@@ -25,6 +25,7 @@ public class M1_Main {
             System.out.println("\nvoulez-vous sélectionner un autre graphe ?\ny\nn");
             String reponse = continuation.next();
             fin = (reponse.equals("y"));
+            System.out.println(1/2);
             }
         }
     }
