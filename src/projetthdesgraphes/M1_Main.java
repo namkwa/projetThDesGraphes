@@ -11,7 +11,7 @@ public class M1_Main {
             Scanner saisieUtilisateur = new Scanner(System.in);
             System.out.println("choisissez un graphe :");
             int numero_graphe = saisieUtilisateur.nextInt();
-            String graphe_choisi = "./Graphe" + numero_graphe + ".txt";
+            String graphe_choisi = "./Graphe" + numero_graphe;
             File text = new File(graphe_choisi);
 
             //On créer un objet Scanner avec le fichier en paramétre

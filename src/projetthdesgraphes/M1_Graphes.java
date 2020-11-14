@@ -22,7 +22,7 @@ public class M1_Graphes {
                 if (i == j) {
                     this.mAdjacente.setValeur(0,i,j);
                 } else {
-                    this.mAdjacente.setValeur(Integer.MAX_VALUE,i,j);
+                    this.mAdjacente.setValeur(Double.POSITIVE_INFINITY,i,j);
                 }
             }
         }
@@ -57,7 +57,7 @@ public class M1_Graphes {
         System.out.println("il n'y a aucun circuit absorbant");
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
-                if (this.mValeur.getValeur(i,j) != 1000) {
+                if (this.mValeur.getValeur(i,j) < Double.POSITIVE_INFINITY) {
                     System.out.println("taille du chemin le plus court entre " + i + " et " + j + ": " + this.mValeur.getValeur(i,j));
                 }
             }
