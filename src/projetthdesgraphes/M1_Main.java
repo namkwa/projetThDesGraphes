@@ -17,12 +17,14 @@ public class M1_Main {
             //On créer un objet Scanner avec le fichier en paramétre
             Scanner scan = new Scanner(text);
             M1_Graphes graphe = new M1_Graphes(scan);
+            System.out.println("Graphe original");
             System.out.println(graphe);
+            System.out.println("Floyd Warshall");
             graphe.floyd_Warshall();
             Scanner continuation = new Scanner(System.in);
             System.out.println("voulez-vous sélectionner un autre graphe ?\ny\nn");
             String reponse = continuation.next();
-            fin = (reponse == "y");
+            fin = (reponse.equals("y"));
             }
         }
     }
