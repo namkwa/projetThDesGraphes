@@ -1,7 +1,5 @@
 package projetthdesgraphes;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class M1_Graphes {
