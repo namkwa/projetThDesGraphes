@@ -37,7 +37,7 @@ public class M1_Matrice {
         for (int i = 0; i < this.taille; i++){
             retourMatrice += "\n";
             for (int j =0; j < this.taille;j++){
-                if(this.matrice[i][j]==1000){
+                if(this.matrice[i][j] < 900){
                     retourMatrice += "∞  ";
                 }else{
                     retourMatrice += this.matrice[i][j] + "  ";

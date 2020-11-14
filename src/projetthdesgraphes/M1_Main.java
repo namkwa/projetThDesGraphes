@@ -6,14 +6,23 @@ import java.util.Scanner;
 
 public class M1_Main {
     public static void main(String[] args) throws FileNotFoundException {
-        //On donne le chemin du fichier
-        File text = new File("./GraphesTests.txt");
+        boolean fin = true;
+        while (fin) {
+            Scanner saisieUtilisateur = new Scanner(System.in);
+            System.out.println("choisissez un graphe :");
+            int numero_graphe = saisieUtilisateur.nextInt();
+            String graphe_choisi = "./Graphe" + numero_graphe + ".txt";
+            File text = new File(graphe_choisi);
 
-        //On créer un objet Scanner avec le fichier en paramétre
-        Scanner scan = new Scanner(text);
-        M1_Graphes graphe = new M1_Graphes(scan);
-        System.out.println(graphe);
-        graphe.floyd_Warshall();
-
+            //On créer un objet Scanner avec le fichier en paramétre
+            Scanner scan = new Scanner(text);
+            M1_Graphes graphe = new M1_Graphes(scan);
+            System.out.println(graphe);
+            graphe.floyd_Warshall();
+            Scanner continuation = new Scanner(System.in);
+            System.out.println("voulez-vous sélectionner un autre graphe ?\ny\nn");
+            String reponse = continuation.next();
+            fin = (reponse == "y");
+            }
         }
     }

@@ -12,9 +12,9 @@ public class M1_Graphes {
         //on créé la matrice adjacente
         String line = scan.nextLine();
         this.mAdjacente = new M1_Matrice(Integer.parseInt(line.substring(0,1)));
-        int taille = Integer.parseInt(line.substring(0,1));
+        int taille = Integer.parseInt(line);
         line = scan.nextLine();
-        int nb_arcs = Integer.parseInt(line.substring(0,1));
+        int nb_arcs = Integer.parseInt(line);
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
                 if (i == j) {
