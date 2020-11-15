@@ -45,14 +45,20 @@ public class M1_Matrice {
             retourMatrice += "\n";
             for (int j =0; j < this.taille + 1;j++){
                 if (i == 0 && j ==0) {
-                    retourMatrice += " ";
+                    if (taille > 10) {
+                        retourMatrice += "  ";
+                    }
+                    else {
+                        retourMatrice += " ";
+                    }
+
                 }
                 else if (i == 0) {
                     for (int m = 0; m < tailleCase + 1; m++) {
                         int longueur = String.valueOf(m).length();
                         int debut = (tailleCase - longueur)/2;
                         if (m == debut) {
-                            retourMatrice += j;
+                            retourMatrice += j-1;
                         }
                         else if (debut < m && m <= longueur + debut ) {
 
@@ -62,8 +68,16 @@ public class M1_Matrice {
                         }
                     }
                 }
-                else if (j == 0) {
-                    retourMatrice += i;
+                else if (j == 0 && taille < 11) {
+                    retourMatrice += i-1;
+                }
+                else if (j == 0 && taille >10) {
+                    if (i > 10) {
+                        retourMatrice += i-1;
+                    }
+                    else {
+                        retourMatrice += i-1 + " ";
+                    }
                 }
                 else {
                     if(this.matrice[i-1][j-1] == Double.POSITIVE_INFINITY){
