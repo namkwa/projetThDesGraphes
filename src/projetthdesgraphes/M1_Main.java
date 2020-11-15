@@ -9,7 +9,7 @@ public class M1_Main {
         boolean fin = true;
         while (fin) {
             Scanner saisieUtilisateur = new Scanner(System.in);
-            System.out.println("choisissez un graphe :");
+            System.out.println("Choisissez un graphe :");
             int numero_graphe = saisieUtilisateur.nextInt();
             String graphe_choisi = "./Graphe" + numero_graphe;
             File text = new File(graphe_choisi);
@@ -22,10 +22,14 @@ public class M1_Main {
             System.out.println("\nFloyd Warshall");
             graphe.floyd_Warshall();
             Scanner continuation = new Scanner(System.in);
-            System.out.println("\nvoulez-vous sélectionner un autre graphe ?\ny\nn");
+            System.out.println("\nVoulez-vous sélectionner un autre graphe ?\n(y/n)");
             String reponse = continuation.next();
             fin = (reponse.equals("y"));
-            System.out.println(1/2);
+            if (fin==false) {
+                saisieUtilisateur.close();
+                continuation.close();
+                System.out.println("Fin");
             }
         }
     }
+}
